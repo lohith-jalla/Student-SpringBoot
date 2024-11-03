@@ -5,16 +5,20 @@ import org.springframework.stereotype.Repository;
 import java.util.*;
 import java.util.stream.IntStream;
 
+
+//This acts as DataBase............
 @Repository
 public class StudentDAO {
 
     private List<Student> Students =new ArrayList<>();
 
-    public void delete(String email) {
+    public String delete(String email) {
         var student= findByemail(email);
         if(student!=null){
             Students.remove(student);
+            return "removed Succcess";
         }
+        return "Failed To remove";
     }
 
     public Student save(Student s) {
@@ -39,5 +43,9 @@ public class StudentDAO {
                 .filter(s -> email.equals(s.getEmail()))
                 .findFirst()
                 .orElse(null);
+    }
+
+    public List<Student> findAll() {
+        return Students;
     }
 }

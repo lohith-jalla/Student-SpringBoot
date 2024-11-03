@@ -11,7 +11,7 @@ import java.util.List;
 public class StudentController {
 
 //    @Autowired //field injection
-    private StudentService service;
+    private final StudentService service;
 
     //if we inject using Constructor it is
     // constructor injection(you don't need any annotation ) and if you do it in
@@ -36,15 +36,15 @@ public class StudentController {
     public List<Student> findAllStudents(){
         return service.findAllStudents();
     }
-
+    //put
     @PutMapping
     public Student updateStudent(@RequestBody Student student) {
         return service.update(student);
     }
 
     @DeleteMapping("'{email}")
-    public void delete(@PathVariable String email) {
-        service.delete(email);
+    public String delete(@PathVariable String email) {
+        return service.delete(email);
     }
 
 }

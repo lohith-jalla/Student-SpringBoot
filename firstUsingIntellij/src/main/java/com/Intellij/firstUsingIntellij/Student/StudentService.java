@@ -10,6 +10,6 @@ public interface StudentService {
     Student save(Student s);
     List<Student> findAllStudents() ;
     Student findByemail(String email);
-    void delete(String email);
+    String delete(String email);
     Student update(Student s);
 }
